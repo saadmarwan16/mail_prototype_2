@@ -10,15 +10,14 @@
 
         <link href="{% static 'mail/favicon.ico' %}" rel="icon">
 
-        <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'mail/register-login.css' %}">
+        <!-- <link rel="stylesheet" href="{% static 'mail/styles.css' %}"> -->
 
         {% block script %}
         {% endblock %}
     </head>
     <body>
-        <div class="container">
-            {% block body %}
-            {% endblock %}
-        </div>
+        {% block body %}
+        {% endblock %}
     </body>
 </html>

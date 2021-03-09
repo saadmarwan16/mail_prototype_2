@@ -6,26 +6,47 @@
 
 {% block body %}
 
-    <h2>Register</h2>
+    <div class="container-fluid register-login-container-container">
+        <div class="register-login-container">
+            <div class="register-login-form-container">
+                <div class="register-login-form">
+                    {% if message %}
+                        <div class="alert alert-danger register-login-error-message">
+                            <strong>Oops!</strong> {{ message }}
+                        </div>
+                    {% endif %}
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+                    <h2 class="register-login-heading">Register</h2>
 
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email Address">
+                    <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input autofocus class="form-control register-login-input" type="email" 
+                                name="email" placeholder="Email Address"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control register-login-input" type="password" 
+                                name="password" placeholder="Password"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control register-login-input" type="password" 
+                                name="confirmation" placeholder="Confirm Password"
+                            >
+                        </div>
+                        <input class="btn btn-primary register-login-submit-btn" type="submit" 
+                            value="Register"
+                        >
+                    </form>
+                
+                    <small class="register-login-change-container">
+                        Already have an account? 
+                        <a class="register-login-change" href="{% url 'login' %}">Log In</a>
+                    </small>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Register">
-    </form>
-
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    </div>
 
 {% endblock %}
