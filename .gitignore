@@ -1,0 +1,16 @@
+# Main project
+*.sqlite3
+.env
+env/
+__pycache__/
+
+# Backend app
+backend/__pycache__/
+backend/migrations/
+
+# Mail app
+mail/__pycache__/
+
+# Frontend app
+frontend/__pycache__/
+frontend/node_modules/
