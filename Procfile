@@ -1,1 +1,1 @@
-web: gunicorn megaswish.wsgi --log-file -
+web: gunicorn mail.wsgi --log-file -
