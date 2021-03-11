@@ -20,22 +20,24 @@ def get_csrf_token(request):
     return JsonResponse({"csrf_token": get_token(request)}, status=200)
 
 
-# def index(request):
-
-#     # Authenticated users view their inbox
-#     if request.user.is_authenticated:
-#         return render(request, "mail/inbox.html")
-
-#     # Everyone else is prompted to sign in
-#     else:
-#         return HttpResponseRedirect(reverse("login"))
-
-
-@api_view()
 def index(request):
-    return Response({
-        "message": request.user.is_authenticated
-    }, status=400)
+
+    return render(request, "mail/inbox.html")
+
+    # # Authenticated users view their inbox
+    # if request.user.is_authenticated:
+    #     return render(request, "mail/inbox.html")
+
+    # # Everyone else is prompted to sign in
+    # else:
+    #     return HttpResponseRedirect(reverse("login"))
+
+
+# @api_view()
+# def index(request):
+#     return Response({
+#         "message": request.user.is_authenticated
+#     }, status=400)
 
 
 @csrf_exempt
@@ -150,71 +152,71 @@ def email(request, email_id):
         }, status=400)
 
 
-# def login_view(request):
-#     if request.method == "POST":
-
-#         # Attempt to sign user in
-#         email = request.POST["email"]
-#         password = request.POST["password"]
-#         user = authenticate(request, username=email, password=password)
-
-#         # Check if authentication successful
-#         if user is not None:
-#             login(request, user)
-#             return HttpResponseRedirect(reverse("index"))
-#         else:
-#             return render(request, "mail/login.html", {
-#                 "message": "Invalid email and/or password."
-#             })
-#     else:
-#         return render(request, "mail/login.html")
-
-
-@api_view(['POST'])
-@parser_classes([JSONParser])
 def login_view(request):
+    if request.method == "POST":
 
-    # Attempt to sign user in
-    user = authenticate(request, username=request.data.get("email"), password=request.data.get("password"))
+        # Attempt to sign user in
+        email = request.POST["email"]
+        password = request.POST["password"]
+        user = authenticate(request, username=email, password=password)
 
-    # Check if authentication successful
-    if user is not None:
-        login(request, user)
-        return Response({
-            "message": "Successful"
-        }, status=200)
+        # Check if authentication successful
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "mail/login.html", {
+                "message": "Invalid email and/or password."
+            })
     else:
-        return Response({
-            "error": "Invalid email and/or password"
-        }, status=400)
+        return render(request, "mail/login.html")
 
 
-@api_view(['POST'])
-@parser_classes([JSONParser])
-def register(request):
-    email = request.data.get("email")
+# @api_view(['POST'])
+# @parser_classes([JSONParser])
+# def login_view(request):
 
-    # Ensure password matches confirmation
-    password = request.data.get("password")
-    confirmation = request.data.get("confirmation")
-    if password != confirmation:
-        return Response({
-            "error": "Passwords must match"
-        }, status=400)
+#     # Attempt to sign user in
+#     user = authenticate(request, username=request.data.get("email"), password=request.data.get("password"))
 
-    # Attempt to create new user
-    try:
-        user = User.objects.create_user(email, email, password)
-        user.save()
-    except IntegrityError as e:
-        return Response({
-            "error": "Email address already taken"
-        }, status=400)
+#     # Check if authentication successful
+#     if user is not None:
+#         login(request, user)
+#         return Response({
+#             "message": "Successful"
+#         }, status=200)
+#     else:
+#         return Response({
+#             "error": "Invalid email and/or password"
+#         }, status=400)
 
-    login(request, user)
-    return Response({
-        "message": "Successful"
-    }, status=200)
+
+# @api_view(['POST'])
+# @parser_classes([JSONParser])
+# def register(request):
+#     email = request.data.get("email")
+
+#     # Ensure password matches confirmation
+#     password = request.data.get("password")
+#     confirmation = request.data.get("confirmation")
+#     if password != confirmation:
+#         return Response({
+#             "error": "Passwords must match"
+#         }, status=400)
+
+#     # Attempt to create new user
+#     try:
+#         user = User.objects.create_user(email, email, password)
+#         user.save()
+#     except IntegrityError as e:
+#         return Response({
+#             "error": "Email address already taken"
+#         }, status=400)
+
+#     login(request, user)
+#     return Response({
+#         "message": "Successful"
+#     }, status=200)
 
 
 def logout_view(request):
@@ -222,28 +224,28 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
-# def register(request):
-#     if request.method == "POST":
-#         email = request.POST["email"]
+def register(request):
+    if request.method == "POST":
+        email = request.POST["email"]
 
-#         # Ensure password matches confirmation
-#         password = request.POST["password"]
-#         confirmation = request.POST["confirmation"]
-#         if password != confirmation:
-#             return render(request, "mail/register.html", {
-#                 "message": "Passwords must match."
-#             })
+        # Ensure password matches confirmation
+        password = request.POST["password"]
+        confirmation = request.POST["confirmation"]
+        if password != confirmation:
+            return render(request, "mail/register.html", {
+                "message": "Passwords must match."
+            })
 
-#         # Attempt to create new user
-#         try:
-#             user = User.objects.create_user(email, email, password)
-#             user.save()
-#         except IntegrityError as e:
-#             print(e)
-#             return render(request, "mail/register.html", {
-#                 "message": "Email address already taken."
-#             })
-#         login(request, user)
-#         return HttpResponseRedirect(reverse("index"))
-#     else:
-#         return render(request, "mail/register.html")
+        # Attempt to create new user
+        try:
+            user = User.objects.create_user(email, email, password)
+            user.save()
+        except IntegrityError as e:
+            print(e)
+            return render(request, "mail/register.html", {
+                "message": "Email address already taken."
+            })
+        login(request, user)
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "mail/register.html")

@@ -2,85 +2,79 @@
 {% load static %}
 
 {% block body %}
-    <div class="container-fluid mobile-mailbox-container">
-        <h2>{{ request.user.email }}</h2>
+    <div class="main-mailbox-body">
+        <div class="container">
+            <h2 class="mailbox-owner-address">foo@example.com</h2>
 
-        <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-        <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-        <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-        <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
-        <button class="btn btn-sm btn-outline-primary" id="trashed">Trash</button>
-        <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
-        <hr>
+            <button class="btn btn-sm btn-outline-primary mailbox-btn" id="inbox">Inbox</button>
+            <button class="btn btn-sm btn-outline-primary mailbox-compose-btn" id="compose">Compose</button>
+            <button class="btn btn-sm btn-outline-primary mailbox-btn" id="sent">Sent</button>
+            <button class="btn btn-sm btn-outline-primary mailbox-btn" id="archived">Archived</button>
+            <button class="btn btn-sm btn-outline-primary mailbox-btn" id="trashed">Trash</button>
+            <a class="btn btn-sm btn-outline-primary mailbox-logout-btn" href="{% url 'logout' %}">Log Out</a>
+            <hr>
 
-        <div class="container" id="emails-view"></div>
+            <div class="container" id="emails-view"></div>
 
-        <div class="mobile-mailbox">
-            <div class="mobile-mailbox-mail-container">
-                <div class="mobile-mailbox-sender-timestamp-container">
-                    <h2 class="mobile-mailbox-sender">Sender</h2>
-                    <small class="mobile-mailbox-timestamp">Timestamp</small>
-                </div>
+            <div class="container" id="emails-view" style="display: block;">
+                <h3>Inbox</h3>
+                <div class="list-group">
+                    <!-- <a class="list-group-item list-group-item-action list-group-item-secondary mail-link"> -->
+                    <a>
+                        <div class="sender">bar@example.com</div>
+                        <div class="subject-body">
+                            <span class="subject">Happy new year</span>
+                            <span class="body">Same to you</span>
+                        </div>
 
-                <div class="mobile-mailbox-heading-body-container">
-                    <div>
-                        <h3 class="mobile-mailbox-heading">Heading</h3>
-                        <p class="mobile-mailbox-body">Body</p>
-                    </div>
-                    
-                    <div class="mobile-mailbox-sender-initial-container">
-                        <span class="mobile-mailbox-send-initial">S</span>
-                    </div>
+                        <div class="timestamp timestamp41" style="display: block;">
+                            <small>Dec 31 2020, 09:11 AM</small>
+                        </div>
+                        
+                        <div class="w3-padding w3-xlarge w3-text-blue icons icons41" style="display: none;">
+                            <a title="Delete" style="display: block;">
+                                <i class="material-icons">delete</i>
+                            </a>
+                            <a title="Restore from trash" style="display: none;">
+                                <i class="material-icons">restore_from_trash</i>
+                            </a>
+                            <a title="Archive" style="display: block;">
+                                <i class="material-icons">archive</i>
+                            </a>
+                            <a title="Unarchive" style="display: none;">
+                                <i class="material-icons">unarchive</i>
+                            </a>
+                            <a title="Mark as read" style="display: none;">
+                                <i class="material-icons">mark_email_read</i>
+                            </a>
+                            <a title="Mark as unread" style="display: block;">
+                                <i class="material-icons">mark_email_unread</i>
+                            </a>
+                        </div>
+                    </a>
                 </div>
             </div>
 
-            <div class="mobile-mailbox-mail-container">
-                <div class="mobile-mailbox-sender-timestamp-container">
-                    <h2 class="mobile-mailbox-sender">Sender</h2>
-                    <small class="mobile-mailbox-timestamp">Timestamp</small>
-                </div>
+            <div class="spinner-border text-primary" id="spinner"></div>
 
-                <div class="mobile-mailbox-heading-body-container">
-                    <div>
-                        <h3 class="mobile-mailbox-heading">Heading</h3>
-                        <p class="mobile-mailbox-body">Body</p>
+            <!-- <div id="compose-view">
+                <h3>New Email</h3>
+                <form id="compose-form">
+                    <div class="form-group">
+                        From: <input disabled class="form-control" value="{{ request.user.email }}">
                     </div>
-                    
-                    <div class="mobile-mailbox-sender-initial-container">
-                        <span class="mobile-mailbox-send-initial">S</span>
+                    <div class="form-group">
+                        To: <input id="compose-recipients" class="form-control">
                     </div>
-                </div>
-            </div>
+                    <div class="form-group">
+                        <input class="form-control" id="compose-subject" placeholder="Subject">
+                    </div>
+                    <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+                    <input id="submit-btn" type="submit" class="btn btn-primary"/>
+                </form>
+            </div> -->
+
+            <div class="container" id="single-mail-view"></div>
         </div>
-
-        <!-- <div class="spinner-border text-primary" id="spinner"></div> -->
-
-        <div id="compose-view">
-            <h3>New Email</h3>
-            <form id="compose-form">
-                <div class="form-group">
-                    From: <input disabled class="form-control" value="{{ request.user.email }}">
-                </div>
-                <div class="form-group">
-                    To: <input id="compose-recipients" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="compose-subject" placeholder="Subject">
-                </div>
-                <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-                <input id="submit-btn" type="submit" class="btn btn-primary"/>
-            </form>
-        </div>
-
-        <div class="container" id="single-mail-view"></div>
     </div>
-{% endblock %}
-
-{% block script %}
-    <script src="{% static 'mail/scripts/commands.js' %}"></script>
-    <script src="{% static 'mail/scripts/single-mail.js' %}"></script>
-    <script src="{% static 'mail/scripts/load-mails.js' %}"></script>
-    <script src="{% static 'mail/scripts/compose.js' %}"></script>
-    <script src="{% static 'mail/scripts/mailbox.js' %}"></script>
-    <script src="{% static 'mail/scripts/main.js' %}"></script>
 {% endblock %}

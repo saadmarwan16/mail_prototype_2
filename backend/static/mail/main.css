@@ -1,4 +1,38 @@
-.mobile-mailbox-container {
+.main-mailbox-body {
+    min-height: 100vh;
+    padding: 1rem;
+    background: rgb(253, 89, 171);
+}
+
+.mailbox-owner-address {
+    color: white;
+}
+
+.mailbox-btn, .mailbox-compose-btn, .mailbox-logout-btn {
+    background: white !important;
+    color: rgb(255, 23, 139) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.mailbox-btn:hover, .mailbox-compose-btn:hover, .mailbox-logout-btn:hover {
+    background: rgb(255, 23, 139) !important;
+    color: white !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .mobile-mailbox-container {
     padding: 0;
 }
 
@@ -42,4 +76,4 @@
     margin: 0 .85em;
     font-size: 1.75em;
     color: white;
-}
+} */
