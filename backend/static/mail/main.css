@@ -1,0 +1,45 @@
+.mobile-mailbox-container {
+    padding: 0;
+}
+
+.mobile-mailbox-mail-container {
+    padding: .5em 1em;
+}
+
+.mobile-mailbox-sender-timestamp-container,
+.mobile-mailbox-heading-body-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-mailbox-sender,
+.mobile-mailbox-heading,
+.mobile-mailbox-body {
+    margin: 0;
+}
+
+.mobile-mailbox-sender {
+    font-size: 2rem;
+}
+
+.mobile-mailbox-heading {
+    font-size: 1.5rem;
+}
+
+.mobile-mailbox-body,
+.mobile-mailbox-timestamp {
+    font-size: 1.25rem;
+}
+
+.mobile-mailbox-sender-initial-container {
+    background: blue;
+    padding: .75em 0;
+    border-radius: 50%;
+}
+
+.mobile-mailbox-send-initial {
+    margin: 0 .85em;
+    font-size: 1.75em;
+    color: white;
+}

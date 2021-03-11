@@ -28,6 +28,10 @@
     padding: .5em;
 }
 
+.hide {
+    display: none;
+}
+
 .register-login-heading {
     text-align: center;
     color: white;

@@ -2,38 +2,78 @@
 {% load static %}
 
 {% block body %}
-    <h2>{{ request.user.email }}</h2>
+    <div class="container-fluid mobile-mailbox-container">
+        <h2>{{ request.user.email }}</h2>
 
-    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
-    <button class="btn btn-sm btn-outline-primary" id="trashed">Trash</button>
-    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
-    <hr>
+        <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+        <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+        <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+        <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+        <button class="btn btn-sm btn-outline-primary" id="trashed">Trash</button>
+        <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+        <hr>
 
-    <div class="container" id="emails-view"></div>
+        <div class="container" id="emails-view"></div>
 
-    <div class="spinner-border text-primary" id="spinner"></div>
+        <div class="mobile-mailbox">
+            <div class="mobile-mailbox-mail-container">
+                <div class="mobile-mailbox-sender-timestamp-container">
+                    <h2 class="mobile-mailbox-sender">Sender</h2>
+                    <small class="mobile-mailbox-timestamp">Timestamp</small>
+                </div>
 
-    <div id="compose-view">
-        <h3>New Email</h3>
-        <form id="compose-form">
-            <div class="form-group">
-                From: <input disabled class="form-control" value="{{ request.user.email }}">
+                <div class="mobile-mailbox-heading-body-container">
+                    <div>
+                        <h3 class="mobile-mailbox-heading">Heading</h3>
+                        <p class="mobile-mailbox-body">Body</p>
+                    </div>
+                    
+                    <div class="mobile-mailbox-sender-initial-container">
+                        <span class="mobile-mailbox-send-initial">S</span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                To: <input id="compose-recipients" class="form-control">
+
+            <div class="mobile-mailbox-mail-container">
+                <div class="mobile-mailbox-sender-timestamp-container">
+                    <h2 class="mobile-mailbox-sender">Sender</h2>
+                    <small class="mobile-mailbox-timestamp">Timestamp</small>
+                </div>
+
+                <div class="mobile-mailbox-heading-body-container">
+                    <div>
+                        <h3 class="mobile-mailbox-heading">Heading</h3>
+                        <p class="mobile-mailbox-body">Body</p>
+                    </div>
+                    
+                    <div class="mobile-mailbox-sender-initial-container">
+                        <span class="mobile-mailbox-send-initial">S</span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input class="form-control" id="compose-subject" placeholder="Subject">
-            </div>
-            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input id="submit-btn" type="submit" class="btn btn-primary"/>
-        </form>
+        </div>
+
+        <!-- <div class="spinner-border text-primary" id="spinner"></div> -->
+
+        <div id="compose-view">
+            <h3>New Email</h3>
+            <form id="compose-form">
+                <div class="form-group">
+                    From: <input disabled class="form-control" value="{{ request.user.email }}">
+                </div>
+                <div class="form-group">
+                    To: <input id="compose-recipients" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="compose-subject" placeholder="Subject">
+                </div>
+                <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+                <input id="submit-btn" type="submit" class="btn btn-primary"/>
+            </form>
+        </div>
+
+        <div class="container" id="single-mail-view"></div>
     </div>
-
-    <div class="container" id="single-mail-view"></div>
 {% endblock %}
 
 {% block script %}
