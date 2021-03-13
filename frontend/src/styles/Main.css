@@ -81,19 +81,31 @@ h3 {
     font-weight: bold;
 }
 
-.mail-timestamp {
+/* .mail-timestamp {
     display: none;
-}
+} */
+
+/* .mail-timestamp.hide {
+    display: none;
+} */
 
 .mail-icons {
-    display: flex;
-    color: white;
+    display: none;
+    /* color: white; */
 }
 
 .mail-icon:hover, .single-mail-icon-icon:hover {
     color: white !important;
     cursor: pointer;
     transform: scale(1.25);
+}
+
+.mail-icon, .single-mail-icon-icon {
+    padding: 5px;
+}
+
+.mail-icon.hide {
+    display: none;
 }
 
 .compose-mail-sender, .compose-mail-receipients, .compose-mail-subject, .compose-mail-body {
@@ -179,14 +191,14 @@ h3 {
         opacity: 1;
         height: 100%;
         /* line-height: 100%; */
-        padding: 11.25px;
+        padding: .25rem .5rem;
         margin-bottom: 0px;
     }
     75% {
         opacity: 0;
         height: 100%;
         /* line-height: 100%; */
-        padding: 11.25px;
+        padding: .25rem .5rem;
         margin-bottom: 0px;
     }
     100% {

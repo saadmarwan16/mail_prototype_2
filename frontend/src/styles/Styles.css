@@ -1,0 +1,153 @@
+textarea {
+    min-height: 400px;
+}
+
+/* .mail {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid black;
+} */
+
+.single-mail-sender, .single-mail-recipients, .single-mail-timestamp {
+    width: 100%;
+    height: 30px;
+    margin-left: 12px;
+}
+
+.subject {
+    font-weight: bold;
+    /* margin-right: 10px; */
+}
+
+.subject-body {
+    height: 25px;
+    display: block;
+    width: calc(60% - 12px);
+    overflow: hidden;
+    float: left;
+}
+
+/* .timestamp {
+    text-align: right;
+    height: 30px;
+    width: 40%;
+    overflow: hidden;
+    float: left;
+} */
+
+.mail-link {
+    cursor: pointer;
+    animation-name: remove;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+@keyframes remove {
+    0% {
+        opacity: 1;
+        height: 100%;
+        /* line-height: 100%; */
+        padding: 11.25px;
+        margin-bottom: 0px;
+    }
+    75% {
+        opacity: 0;
+        height: 100%;
+        /* line-height: 100%; */
+        padding: 11.25px;
+        margin-bottom: 0px;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+        /* line-height: 0px; */
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.icons {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: calc(15% - 12px);
+    float: right;
+}
+
+.single-mail-icons {
+    display: block;
+    cursor: pointer;
+    padding-left: 0px !important;
+}
+
+.single-mail-icon {
+    padding: 5px;
+}
+
+.single-mail-icon-icon {
+    font-size: 30px !important;
+    cursor: pointer;
+}
+
+.person-icon-container {
+    position: relative;
+    bottom: 15px;
+}
+
+.reply-icon-container {
+    position: relative;
+    left: 100%;
+    bottom: 110px;
+}
+
+@media (max-width: 575px) {
+    .reply-icon-container {
+        left: 90%;
+    }
+
+    .icons {
+        width: calc(25% - 12px);
+    }
+}
+
+.west {
+    margin: 0px 100px 0px 0px;
+    padding-left: 0px;
+}
+
+.material-icons {
+    padding: 5px;
+}
+
+.material-icons:hover {
+    color: #0056b3;
+}
+
+.commands {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.single-mail-subject {
+    padding-left: 50px;
+    margin-bottom: 25px;
+}
+
+.main-body {
+    padding: 1rem 45% 1rem 1rem;
+}
+
+.main-body-content {
+    margin: 0px;
+}
+
+#spinner {
+    display: none;
+    padding: 1.7%;
+    position: relative;
+    left: 45%;
+    top: 80px;
+}

@@ -90,6 +90,8 @@ const Register = (props) => {
 
     return (
         <>
+            <title>Register - Mail</title>
+
             <div className="container-fluid register-login-container-container">
                 <div className="register-login-container">
                     <div className="register-login-form-container">

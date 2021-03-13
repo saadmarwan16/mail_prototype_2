@@ -8,6 +8,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("get-csrf-token", views.get_csrf_token, name="get_csrf_token"),
+    path("get-user-email", views.get_user_email, name="get_user_email"),
 
     # API Routes
     path("emails", views.compose, name="compose"),

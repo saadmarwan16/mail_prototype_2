@@ -12,67 +12,149 @@
             <button class="btn btn-sm btn-outline-primary mailbox-btn" id="archived">Archived</button>
             <button class="btn btn-sm btn-outline-primary mailbox-btn" id="trashed">Trash</button>
             <a class="btn btn-sm btn-outline-primary mailbox-logout-btn" href="{% url 'logout' %}">Log Out</a>
-            <hr>
+            <hr class="mailbox-seperator">
 
             <div class="container" id="emails-view"></div>
 
-            <div class="container" id="emails-view" style="display: block;">
-                <h3>Inbox</h3>
+            <!-- <div class="container" id="emails-view" style="display: block;">
+                <h3 class="mailbox-name">Inbox</h3>
                 <div class="list-group">
-                    <!-- <a class="list-group-item list-group-item-action list-group-item-secondary mail-link"> -->
-                    <a>
-                        <div class="sender">bar@example.com</div>
-                        <div class="subject-body">
-                            <span class="subject">Happy new year</span>
-                            <span class="body">Same to you</span>
-                        </div>
+                    <a class="mail">
+                        <div class="mail-content sender">bar@example.com</div>
 
-                        <div class="timestamp timestamp41" style="display: block;">
-                            <small>Dec 31 2020, 09:11 AM</small>
+                        <div class="mail-main-content">
+                            <div class="mail-content subject-body">
+                                <span class="subject">Happy new year</span>
+                                <span> - </span>
+                                <span class="body">Same to you</span>
+                            </div>
+
+                            <div class="mail-timestamp-icons">
+                                <div class="mail-content" style="display: block;">
+                                    <small>Dec 31 2020, 09:11 AM</small>
+                                </div>
+
+                                <div class="mail-icons" style="display: none;">
+                                    <i title="Delete" class="material-icons mail-icon">delete</i>
+                                    <i title="Restore from trash" class="material-icons mail-icon">restore_from_trash</i>
+                                    <i title="Archive" class="material-icons mail-icon">archive</i>
+                                    <i title="Unarchive" class="material-icons mail-icon">unarchive</i>
+                                    <i title="Mark as read" class="material-icons mail-icon">mark_email_read</i>
+                                    <i title="Mark as unread" class="material-icons mail-icon">mark_email_unread</i>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="w3-padding w3-xlarge w3-text-blue icons icons41" style="display: none;">
-                            <a title="Delete" style="display: block;">
-                                <i class="material-icons">delete</i>
-                            </a>
-                            <a title="Restore from trash" style="display: none;">
-                                <i class="material-icons">restore_from_trash</i>
-                            </a>
-                            <a title="Archive" style="display: block;">
-                                <i class="material-icons">archive</i>
-                            </a>
-                            <a title="Unarchive" style="display: none;">
-                                <i class="material-icons">unarchive</i>
-                            </a>
-                            <a title="Mark as read" style="display: none;">
-                                <i class="material-icons">mark_email_read</i>
-                            </a>
-                            <a title="Mark as unread" style="display: block;">
-                                <i class="material-icons">mark_email_unread</i>
-                            </a>
+                    </a>
+                    <a class="mail">
+                        <div class="mail-content sender">bar@example.com</div>
+
+                        <div class="mail-main-content">
+                            <div class="mail-content subject-body">
+                                <span class="subject">Happy new year</span> -
+                                <span class="body">Same to you</span>
+                            </div>
+
+                            <div class="mail-timestamp-icons">
+                                <div class="mail-content" style="display: block;">
+                                    <small>Dec 31 2020, 09:11 AM</small>
+                                </div>
+
+                                <div class="mail-icons" style="display: none;">
+                                    <i title="Delete" class="material-icons mail-icon">delete</i>
+                                    <i title="Restore from trash" class="material-icons mail-icon">restore_from_trash</i>
+                                    <i title="Archive" class="material-icons mail-icon">archive</i>
+                                    <i title="Unarchive" class="material-icons mail-icon">unarchive</i>
+                                    <i title="Mark as read" class="material-icons mail-icon">mark_email_read</i>
+                                    <i title="Mark as unread" class="material-icons mail-icon">mark_email_unread</i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="mail">
+                        <div class="mail-content sender">bar@example.com</div>
+
+                        <div class="mail-main-content">
+                            <div class="mail-content subject-body">
+                                <span class="subject">Happy new year</span> -
+                                <span class="body">Same to you</span>
+                            </div>
+
+                            <div class="mail-timestamp-icons">
+                                <div class="mail-content" style="display: none;">
+                                    <small>Dec 31 2020, 09:11 AM</small>
+                                </div>
+
+                                <div class="mail-icons" style="display: block;">
+                                    <i title="Delete" class="material-icons mail-icon">delete</i>
+                                    <i title="Restore from trash" class="material-icons mail-icon">restore_from_trash</i>
+                                    <i title="Archive" class="material-icons mail-icon">archive</i>
+                                    <i title="Unarchive" class="material-icons mail-icon">unarchive</i>
+                                    <i title="Mark as read" class="material-icons mail-icon">mark_email_read</i>
+                                    <i title="Mark as unread" class="material-icons mail-icon">mark_email_unread</i>
+                                </div>
+                            </div>
                         </div>
                     </a>
                 </div>
             </div>
 
-            <div class="spinner-border text-primary" id="spinner"></div>
+            <div class="spinner-border text-primary" id="spinner"></div> -->
 
-            <!-- <div id="compose-view">
-                <h3>New Email</h3>
-                <form id="compose-form">
-                    <div class="form-group">
-                        From: <input disabled class="form-control" value="{{ request.user.email }}">
+            <!-- <div>
+                <h3 class="compose-mail-heading">New Email</h3>
+                <form>
+                    <div class="form-group compose-mail-sender-container">
+                        From: <input disabled class="form-control compose-mail-sender" value="foo@example.com">
+                    </div>
+                    <div class="form-group compose-mail-receipients-container">
+                        To: <input class="form-control compose-mail-receipients" placeholder="Receipient (s)">
                     </div>
                     <div class="form-group">
-                        To: <input id="compose-recipients" class="form-control">
+                        <input class="form-control compose-mail-subject" placeholder="Subject">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="compose-subject" placeholder="Subject">
+                        <textarea class="form-control compose-mail-body" placeholder="Body"></textarea>
                     </div>
-                    <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-                    <input id="submit-btn" type="submit" class="btn btn-primary"/>
+                    <input type="submit" class="btn btn-primary compose-mail-submit-btn"/>
                 </form>
             </div> -->
+
+            <div class="container">
+                <div class="contents-container">
+                    <div class="row commands">
+                        <div>
+                            <a class="single-mail-icon" title="Go back">
+                                <i class="material-icons single-mail-icon-icon">west</i>
+                            </a>
+                            <a class="single-mail-icon" title="Delete">
+                                <i class="material-icons single-mail-icon-icon">delete</i>
+                            </a>
+                            <a class="single-mail-icon" title="Mark as unread">
+                                <i class="material-icons single-mail-icon-icon">mark_email_unread</i>
+                            </a>
+                            <a class="single-mail-icon" title="Archive">
+                                <i class="material-icons single-mail-icon-icon">archive</i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row single-mail-subject-reply">
+                        <h2>Okay</h2>
+                        <a title="Reply" class="single-mail-icon reply-icon-container">
+                            <i class="material-icons single-mail-icon-icon">reply</i>
+                        </a>
+                    </div>
+                    <div class="single-mail-meta">
+                        <div class="single-mail-sender">Sender: bar@example.com</div>
+                        <div class="single-mail-recipients">Recipient(s): foo@example.com</div>
+                        <div class="single-mail-timestamp">
+                            <small>Timestamp: Jan 02 2021, 04:13 AM</small>
+                        </div>
+                    </div>
+                    <div class="row single-mail-main-body jumbotron">
+                        <p class="single-mail-main-body-content">Let's get to the chase</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="container" id="single-mail-view"></div>
         </div>

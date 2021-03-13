@@ -77,6 +77,8 @@ const Login = (props) => {
 
     return (
         <>
+            <title>Login - Mail</title>
+            
             <div className="container-fluid register-login-container-container">
                 <div className="register-login-container">
                     <div className="register-login-form-container">
